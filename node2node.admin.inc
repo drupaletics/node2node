@@ -20,6 +20,23 @@
 
  */
 
+/**
+ * define forms for administration of node2node-module
+ *
+ * @ingroup_forms
+ * @see system_stettings_form()
+ */
 function node2node_admin_setting(){
-  
+  //Call a array, containing the nodetypes with internal names as #key and
+  //userfriendly names for the value
+  $options = node_get_types('names');
+  //Defines the admin-form
+  $form['node2node_nodetypes'] = array(
+      '#type' => 'checkboxes',
+      '#title' => 'Choose nodetypes which should run with node2node-feature',
+      '#options' => $options,
+      '#default_value' => variable_get('node2node_types', array('story')),
+      'description' => t('The node2node-Button will avaiable on all form of nodetypes you choose here.'),
+  );
+  return system_settings_form($form);
 }
