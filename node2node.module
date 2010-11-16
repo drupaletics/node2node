@@ -1,17 +1,35 @@
 <?php
+// $Id$
 /**
- * Implementation of hook_menu
+ * @file
+ * Bring link of content to anothers content body quick.
+ *
+ * This module gives the posibility to bring links of
+ * content in the side to your text-body very quickly
+ * using a view, some funny hooks and tricky JS.
+ *
+ */
+
+/**
+ * Implementation of hook_menu()
+ *
+ * ##form-args:
+ * Calls a custom function as callback for drupal_get_form @see node2node_admin_settings()
  */
 
 function node2node_menu() {
+  //Defines the configuration page
   $items['admin/settings/node2node'] = array(
       'title' => t(node2node-Configuration),
       'description' => t('Configure node-types on which node2node should run'),
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('node2node_admin_settings'),  //TODO: define node2node_admin_settings()
+      //look: ##form-args
+      'page arguments' => array('node2node_admin_settings'),  
       'access_arguments' => array('administer site configuration'),
       'file' => 'node2node.admin.inc', 
- );
+  );
+
+  return $items;
 }
 
 /**node2node_admin_settings
@@ -19,11 +37,13 @@ function node2node_menu() {
  */
 
 function node2node_node_form_alter(&$form,&$form_state,$form_id){
+  //defines a button in every nodeform calling it
   $form['node2node_button'] = array(
     '#weight' => 0,
     '#type' => 'button',
     '#button_type' => 'node2node',
     '#title' => t('Insert your nodelinks to body'),
+    //create button with an aha-callback on the event-listener
     '#ahah' => array(
       'path' => '',  //TODO: implement hook_menu to build a url for aha-path  
       'progress' => array(
@@ -34,6 +54,6 @@ function node2node_node_form_alter(&$form,&$form_state,$form_id){
     ),
   );
 }
-//TODO: build a configuration-page
+
 //TODO: build a url, containing mycontent-view
-//TODO: override the method of the AHAH-Event-Listener
+//TODO: define an ajax-ready-listener to handle the html, got from the AHAH-Event-Listener
