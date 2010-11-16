@@ -1,0 +1,4 @@
+name = node2node
+description = node2node
+package = drupaletics_devteam_releases
+core = 6.x

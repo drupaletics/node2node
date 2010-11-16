@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * implementation of hook_node_form_alter
+ */
+function node2node_node_form_alter(&$form,&$form_state,$form_id){
+  $form['node2node_button'] = array(
+    '#weight' => 0,
+    '#type' => 'button',
+    '#button_type' => 'node2node',
+    '#title' => t('Insert your nodelinks to body'),
+    '#ahah' => array(
+      'path' => '',  //TODO: implement hook_menu to build a url for aha-path  
+      'progress' => array(
+        'type' => 'throbber'
+      ),
+      'wrapper' => 'node2node-selection',
+      'method' => 'replace'
+    ),
+  );
+}
