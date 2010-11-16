@@ -20,13 +20,14 @@
 function node2node_menu() {
   //Defines the configuration page
   $items['admin/settings/node2node'] = array(
-      'title' => t(node2node-Configuration),
+      'title' => t('node2node'),
       'description' => t('Configure node-types on which node2node should run'),
       'page callback' => 'drupal_get_form',
       //look: ##form-args
-      'page arguments' => array('node2node_admin_settings'),  
-      'access_arguments' => array('administer site configuration'),
-      'file' => 'node2node.admin.inc', 
+      'page arguments' => array('node2node_admin_settings'),
+      'access arguments' => array('administer site configuration'),
+      'file' => 'node2node.admin.inc',
+      'type' => 'MENU_NORMAL_ITEM'
   );
 
   return $items;
@@ -35,7 +36,7 @@ function node2node_menu() {
 /**node2node_admin_settings
  * implementation of hook_node_form_alter
  */
-
+/*
 function node2node_node_form_alter(&$form,&$form_state,$form_id){
   //defines a button in every nodeform calling it
   $form['node2node_button'] = array(
@@ -50,10 +51,12 @@ function node2node_node_form_alter(&$form,&$form_state,$form_id){
         'type' => 'throbber'
       ),
       'wrapper' => 'node2node-selection',
-      'method' => 'replace'
+      'method' => 'replace',
     ),
   );
-}
 
+  return $form;
+}
+*/
 //TODO: build a url, containing mycontent-view
 //TODO: define an ajax-ready-listener to handle the html, got from the AHAH-Event-Listener
