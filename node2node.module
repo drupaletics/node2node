@@ -8,11 +8,13 @@ function node2node_menu() {
       'title' => t(node2node-Configuration),
       'description' => t('Configure node-types on which node2node should run'),
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('node2node_admin_settings'),
-      'access_arguments' => array('administer site configuration')
-  );#TODO: Write out $items['admin/build/node2node'] in node2node_menu()
+      'page arguments' => array('node2node_admin_settings'),  //TODO: define node2node_admin_settings()
+      'access_arguments' => array('administer site configuration'),
+      'file' => 'node2node.admin.inc', 
+ );
 }
-/**
+
+/**node2node_admin_settings
  * implementation of hook_node_form_alter
  */
 
@@ -32,6 +34,6 @@ function node2node_node_form_alter(&$form,&$form_state,$form_id){
     ),
   );
 }
-#TODO: build a configuration-page
-#TODO: build a url, containing mycontent-view
-#TODO: override the method of the AHAH-Event-Listener
+//TODO: build a configuration-page
+//TODO: build a url, containing mycontent-view
+//TODO: override the method of the AHAH-Event-Listener
