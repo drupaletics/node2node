@@ -36,7 +36,7 @@ function node2node_menu() {
 /**node2node_admin_settings
  * implementation of hook_node_form_alter
  */
-/*
+
 function node2node_node_form_alter(&$form,&$form_state,$form_id){
   //defines a button in every nodeform calling it
   $form['node2node_button'] = array(
@@ -57,6 +57,6 @@ function node2node_node_form_alter(&$form,&$form_state,$form_id){
 
   return $form;
 }
-*/
+
 //TODO: build a url, containing mycontent-view
 //TODO: define an ajax-ready-listener to handle the html, got from the AHAH-Event-Listener
