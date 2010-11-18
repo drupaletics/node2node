@@ -34,10 +34,10 @@ function node2node_menu() {
 }
 
 /**node2node_admin_settings
- * implementation of hook_node_form_alter
+ * implementation of hook_nodeapi()
  */
 
-function node2node_node_form_alter(&$form,&$form_state,$form_id){
+function node2node_form_node_alter(&$form, &$form_state){
   //defines a button in every nodeform calling it
   $form['node2node_button'] = array(
     '#weight' => 0,
@@ -58,5 +58,9 @@ function node2node_node_form_alter(&$form,&$form_state,$form_id){
   return $form;
 }
 
-//TODO: build a url, containing mycontent-view
-//TODO: define an ajax-ready-listener to handle the html, got from the AHAH-Event-Listener
+/**
+ * @todo: build a url containing mycontent-view
+ * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
+ * @todo: FIX : node2node-button doesent apear on node-add-form
+ * @todo: FIX : error-messages when insering new terms to blogcategory
+ */
