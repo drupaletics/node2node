@@ -44,7 +44,7 @@ function node2node_form_alter(&$form, $form_state, $form_id){
   if($form_id == 'blog_node_form'){
   $form['node2node_button'] = array(
     '#weight' => '0',
-    '#type' => 'button',
+    '#type' => 'button',!!
     '#button_type' => 'node2node',
     '#title' => t('Insert your nodelinks to body'),
     '#value' => t('node2node-Link'),
