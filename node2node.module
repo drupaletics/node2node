@@ -40,12 +40,22 @@ function node2node_menu() {
 function node2node_form_alter(&$form, $form_state, $form_id){
   //tell us the form-id on page-load
   drupal_set_message('Die Form-ID ist ' . $form_id);
+  
+  $nodetypes = node_get_types('names');
+  $nodetypeAmount = count($nodetypes);
+  $mytype = '';
+  for($i = 0; $i <= $nodetypeAmount; $i++){
+    if($nodetypes[$i].'_node_form' == $form_id){
+      $mytype = $nodetypes[$i].'_node_form';
+    }
+  }
+  drupal_set_message('mytype hat den Wert: ' . $mytype);
   //defines a button in every nodeform calling it
-  if($form_id == 'blog_node_form'){
+  if($form_id == $myformid){
   $form['node2node_button'] = array(
     '#weight' => '0',
-    '#type' => 'button',!!
-    '#button_type' => 'node2node',
+    '#type' => 'button',
+    '#button_type' => 'submit',
     '#title' => t('Insert your nodelinks to body'),
     '#value' => t('node2node-Link'),
     //create button with an aha-callback on the event-listener
@@ -70,6 +80,6 @@ function node2node_form_alter(&$form, $form_state, $form_id){
 /**
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
- * @todo: FIX : node2node-button doesent apear on node-add-form
+ * @todo: FIX : node2node-button doesent apear on all node-add-forms
  * @todo: FIX : error-messages when insering new terms to blogcategory
  */
