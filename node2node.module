@@ -37,13 +37,17 @@ function node2node_menu() {
  * implementation of hook_nodeapi()
  */
 
-function node2node_form_node_alter(&$form, &$form_state){
+function node2node_form_alter(&$form, $form_state, $form_id){
+  //tell us the form-id on page-load
+  drupal_set_message('Die Form-ID ist ' . $form_id);
   //defines a button in every nodeform calling it
+  if($form_id == 'blog_node_form'){
   $form['node2node_button'] = array(
-    '#weight' => 0,
+    '#weight' => '0',
     '#type' => 'button',
     '#button_type' => 'node2node',
     '#title' => t('Insert your nodelinks to body'),
+    '#value' => t('node2node-Link'),
     //create button with an aha-callback on the event-listener
     '#ahah' => array(
       'path' => '',  //TODO: implement hook_menu to build a url for aha-path  
@@ -54,9 +58,14 @@ function node2node_form_node_alter(&$form, &$form_state){
       'method' => 'replace',
     ),
   );
+  }
 
   return $form;
 }
+/*
+function node2node_form_alter(&$form, $form_state, $form_id){
+  drupal_set_message('Die Form-ID ist ' . $form_id);
+}*/
 
 /**
  * @todo: build a url containing mycontent-view
