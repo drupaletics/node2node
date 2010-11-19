@@ -43,13 +43,25 @@ function node2node_form_alter(&$form, $form_state, $form_id){
   
   $nodetypes = node_get_types('names');
   $nodetypeAmount = count($nodetypes);
-  $mytype = '';
+  $mytype;
   for($i = 0; $i <= $nodetypeAmount; $i++){
-    if($nodetypes[$i].'_node_form' == $form_id){
-      $mytype = $nodetypes[$i].'_node_form';
+
+    $mytype ="";
+    $mytype = $nodetypes[0];
+    
+    drupal_set_message('Mytype is des do' . $mytype);
+    if($mytype.'_node_form' == $form_id){
+      break;
     }
+
   }
-  drupal_set_message('mytype hat den Wert: ' . $mytype);
+  $counter = 0;
+  foreach ($nodetypes as $nodetype){
+    $mytype[$counter] = $nodetype;
+    $counter ++;
+  }
+  print_r($mytype);
+  
   //defines a button in every nodeform calling it
   if($form_id == $myformid){
   $form['node2node_button'] = array(
