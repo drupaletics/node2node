@@ -35,7 +35,7 @@ function node2node_admin_settings(){
       '#type' => 'checkboxes',
       '#title' => 'Choose nodetypes which should run with node2node-feature',
       '#options' => $options,
-      '#default_value' => variable_get('node2node_types', array('story')),
+      '#default_value' => variable_get('node2node_nodetypes', array('Story')),
       '#description' => t('The node2node-Button will avaiable on all form of nodetypes you choose here.'),
   );
   return system_settings_form($form);
