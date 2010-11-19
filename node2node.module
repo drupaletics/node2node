@@ -29,7 +29,6 @@ function node2node_menu() {
       'file' => 'node2node.admin.inc',
       'type' => 'MENU_NORMAL_ITEM'
   );
-
   return $items;
 }
 
@@ -39,49 +38,35 @@ function node2node_menu() {
 
 function node2node_form_alter(&$form, $form_state, $form_id){
   //tell us the form-id on page-load
-  drupal_set_message('Die Form-ID ist ' . $form_id);
-  
-  $nodetypes = node_get_types('names');
-  $nodetypeAmount = count($nodetypes);
-  $mytype;
-  for($i = 0; $i <= $nodetypeAmount; $i++){
-
-    $mytype ="";
-    $mytype = $nodetypes[0];
-    
-    drupal_set_message('Mytype is des do' . $mytype);
-    if($mytype.'_node_form' == $form_id){
-      break;
+  $nodetypes = variable_get('node2node_nodetypes',array('Story'));
+  $myformid = '';
+  foreach($nodetypes as $nodetype){
+    $nodetype_format = drupal_strtolower($nodetype);
+    if($form_id == $nodetype_format . '_node_form'){
+      $myformid = $form_id;
     }
-
   }
-  $counter = 0;
-  foreach ($nodetypes as $nodetype){
-    $mytype[$counter] = $nodetype;
-    $counter ++;
-  }
-  print_r($mytype);
-  
+  if(!empty($myformid)){
   //defines a button in every nodeform calling it
   if($form_id == $myformid){
-  $form['node2node_button'] = array(
-    '#weight' => '0',
-    '#type' => 'button',
-    '#button_type' => 'submit',
-    '#title' => t('Insert your nodelinks to body'),
-    '#value' => t('node2node-Link'),
-    //create button with an aha-callback on the event-listener
-    '#ahah' => array(
-      'path' => '',  //TODO: implement hook_menu to build a url for aha-path  
-      'progress' => array(
-        'type' => 'throbber'
+    $form['node2node_button'] = array(
+      '#weight' => '0',
+      '#type' => 'button',
+      '#button_type' => 'submit',
+      '#title' => t('Insert your nodelinks to body'),
+      '#value' => t('node2node-Link'),
+      //create button with an aha-callback on the event-listener
+      '#ahah' => array(
+        'path' => '',  //TODO: implement hook_menu to build a url for aha-path
+        'progress' => array(
+          'type' => 'throbber'
+        ),
+        'wrapper' => 'node2node-selection',
+        'method' => 'replace',
       ),
-      'wrapper' => 'node2node-selection',
-      'method' => 'replace',
-    ),
-  );
+    );
+    }
   }
-
   return $form;
 }
 /*
