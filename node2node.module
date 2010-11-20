@@ -65,15 +65,14 @@ function node2node_form_alter(&$form, $form_state, $form_id) {
   //tell us the form-id on page-load
 
   $nodetypes = variable_get('node2node_nodetypes', array('Story'));
+  dsm($nodetypes);
   $myformid = '';
   
-  if ($nodetypes != 'Story') {
   foreach ($nodetypes as $nodetype) {
     $nodetype_format = drupal_strtolower($nodetype);
     if ($form_id == $nodetype_format . '_node_form') {
       $myformid = $form_id;
     }
-  }
   }
   
   if (!empty($myformid)) {
