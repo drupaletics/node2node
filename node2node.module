@@ -54,7 +54,7 @@ function node2node_menu() {
 function node2node_show(){
   module_invoke(views);
   $output = views_embed_view('node2nodeFilter_mycontent');
-  return drupal_json($output);
+  return $output;
 }
 /**node2node_admin_settings
  * implementation of hook_nodeapi()
@@ -104,4 +104,5 @@ function node2node_form_alter(&$form, $form_state, $form_id){
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
  * @todo: FIX : error-messages when insering new terms to blogcategory
+ * @todo: build a container, which handels ahah-content
  */
