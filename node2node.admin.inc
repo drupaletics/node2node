@@ -11,7 +11,7 @@
  * @ingroup_forms
  * @see system_stettings_form()
  */
-function node2node_admin_settings(){
+function node2node_admin_settings() {
   //Call a array, containing the nodetypes with internal names as #key and
   //userfriendly names for the value
   $options = node_get_types('names');

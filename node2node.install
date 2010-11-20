@@ -6,14 +6,14 @@
  */
 
 /**
- * Implementation of hook_install
+ * Implementation of hook_install().
  */
-function node2node_install(){
-  variable_set('node2node_nodetypes','Story');
+function node2node_install() {
+  variable_set('node2node_nodetypes', 'Story');
 }
 /**
- * Implementation of hook_uninstall
+ * Implementation of hook_uninstall().
  */
-function node2node_uninstall(){
+function node2node_uninstall() {
   variable_del('node2node_nodetypes');
 }
