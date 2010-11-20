@@ -47,6 +47,7 @@ function node2node_menu() {
   return $items;
 }
 
+
 /**
  * node2node_js
  * helper for js-callback in node2node_menu
@@ -54,7 +55,7 @@ function node2node_menu() {
 
 function node2node_show() {
   $output = views_embed_view('node2nodeFilter_mycontent','default');
-  return $output;
+  return drupal_json($output);
 }
 /**node2node_admin_settings
  * Implementation of hook_nodeapi().
@@ -78,25 +79,21 @@ function node2node_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == $myformid) {
     $form['node2node_button'] = array(
       '#weight' => '0',
-      '#type' => 'button',
-      '#button_type' => 'button',
-      '#title' => t('Insert your nodelinks to body'),
-      '#value' => t('node2node-Link'),
+      '#type' => 'markup',
+      '#prefix' => '<div class="node2node-link"><a href="/node2node_add/js">',
+      '#value' => t('node2node-link'),
+      '#suffix' => '</a></div>',
       '#access' => user_access('use node2node-button'),
-      //create button with an aha-callback on the event-listener
-      '#ahah' => array(
-      'path' => 'node2node_add/js',
-        'progress' => array(
-          'type' => 'throbber'
-        ),
-        'method' => 'replace',
-      ),
-
     );
     }
   }
   return $form;
 }
+
+/**
+ * implementation of hook_theme()
+ */
+
 /*
 function node2node_form_alter(&$form, $form_state, $form_id){
   drupal_set_message('Die Form-ID ist ' . $form_id);
@@ -113,6 +110,13 @@ function node2node_views_api() {
   );
 }
 
+/**
+ * Implementation of hook_init()
+ * to load js
+ */
+function node2node_init(){
+  drupal_add_js(drupal_get_path('module', 'node2node') . '/ui/node2node.js');
+}
 /**
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
