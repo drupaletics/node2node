@@ -102,7 +102,16 @@ function node2node_form_alter(&$form, $form_state, $form_id){
   drupal_set_message('Die Form-ID ist ' . $form_id);
 }*/
 
-
+/**
+ * Implementation of hook_views_api().
+ */
+function node2node_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'node2node'),
+    //'path' => drupal_get_path('module', 'node2node') . '/includes',
+  );
+}
 /**
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
