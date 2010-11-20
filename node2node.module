@@ -111,10 +111,17 @@ function node2node_form_alter(&$form, $form_state, $form_id){
  */
 function node2node_views_api() {
   return array(
-    'api' => 2,
+    'api' => 3,
     'path' => drupal_get_path('module', 'node2node'),
     //'path' => drupal_get_path('module', 'node2node') . '/includes',
   );
+}
+
+/**
+ * Implementation of hook_theme()
+ */
+function node2node_theme() {
+
 }
 /**
  * @todo: build a url containing mycontent-view
