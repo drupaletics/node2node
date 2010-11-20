@@ -114,9 +114,42 @@ function node2node_views_api() {
  * Implementation of hook_init()
  * to load js
  */
+
 function node2node_init(){
+  if(arg(0) == 'node' && (arg(1) == 'add' || arg(2) == 'edit')){
+  $output = theme('node2node_javascript');
+  }
+}
+
+/**
+ * Implementation of hook_theme()
+ */
+function node2node_theme(){
+  return array(
+    'node2node' => array(
+      'arguments' => array('form' => NULL),
+      'file' => 'node2node.theme.inc',
+      'template' => 'node2node-link'
+    ),
+    'node2node_javascript' => array(
+       'arguments' => array(),
+    )
+  );
+}
+
+/**
+ * Build theme-functions
+ */
+function theme_node2node($button){
+  theme('node2node_javascript');
+  $output .= drupal_render($button);
+  return $output;
+}
+function theme_node2node_javascript(){
   drupal_add_js(drupal_get_path('module', 'node2node') . '/ui/node2node.js');
 }
+
+
 /**
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
