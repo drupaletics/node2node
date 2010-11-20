@@ -37,7 +37,7 @@ function node2node_menu() {
       'file' => 'node2node.admin.inc',
       'type' => 'MENU_NORMAL_ITEM'
   );
-  $items['node2node/add/js'] = array(
+  $items['node2node_add/js'] = array(
     'title' => t('Add a node'),
       'page callback' => 'node2node_show',
       'type' => 'MENU_CALLBACK',
@@ -85,11 +85,10 @@ function node2node_form_alter(&$form, $form_state, $form_id) {
       '#access' => user_access('use node2node-button'),
       //create button with an aha-callback on the event-listener
       '#ahah' => array(
-      'path' => 'node2node/add/js',
+      'path' => 'node2node_add/js',
         'progress' => array(
           'type' => 'throbber'
         ),
-        'wrapper' => 'node2node-selection',
         'method' => 'replace',
       ),
 
