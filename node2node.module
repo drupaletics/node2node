@@ -66,12 +66,16 @@ function node2node_form_alter(&$form, $form_state, $form_id) {
 
   $nodetypes = variable_get('node2node_nodetypes', array('Story'));
   $myformid = '';
+  
+  if ($nodetypes != 'Story') {
   foreach ($nodetypes as $nodetype) {
     $nodetype_format = drupal_strtolower($nodetype);
     if ($form_id == $nodetype_format . '_node_form') {
       $myformid = $form_id;
     }
   }
+  }
+  
   if (!empty($myformid)) {
   //defines a button in every nodeform calling it
   if ($form_id == $myformid) {
