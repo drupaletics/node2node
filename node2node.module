@@ -11,17 +11,18 @@
  */
 
 /**
- * Implementation of hook_perm()
+ * Implementation of hook_perm().
  */
 
-function node2node_perm(){
+function node2node_perm() {
   return array('use node2node-button');
 }
 /**
- * Implementation of hook_menu()
+ * Implementation of hook_menu().
  *
  * ##form-args:
- * Calls a custom function as callback for drupal_get_form @see node2node_admin_settings()
+ * Calls a custom function as callback for drupal_get_form
+ * @see node2node_admin_settings()
  */
 
 function node2node_menu() {
@@ -40,7 +41,7 @@ function node2node_menu() {
     'title' => t('Add a node'),
       'page callback' => 'node2node_show',
       'type' => 'MENU_CALLBACK',
-      'access callback' => 'user_access', 
+      'access callback' => 'user_access',
       'access arguments' => array('use node2node-button')
   );
   return $items;
@@ -51,29 +52,29 @@ function node2node_menu() {
  * helper for js-callback in node2node_menu
  */
 
-function node2node_show(){
+function node2node_show() {
   module_invoke(views);
   $output = views_embed_view('node2nodeFilter_mycontent');
   return $output;
 }
 /**node2node_admin_settings
- * implementation of hook_nodeapi()
+ * Implementation of hook_nodeapi().
  */
 
-function node2node_form_alter(&$form, $form_state, $form_id){
+function node2node_form_alter(&$form, $form_state, $form_id) {
   //tell us the form-id on page-load
 
-  $nodetypes = variable_get('node2node_nodetypes',array('Story'));
+  $nodetypes = variable_get('node2node_nodetypes', array('Story'));
   $myformid = '';
-  foreach($nodetypes as $nodetype){
+  foreach ($nodetypes as $nodetype) {
     $nodetype_format = drupal_strtolower($nodetype);
-    if($form_id == $nodetype_format . '_node_form'){
+    if ($form_id == $nodetype_format . '_node_form') {
       $myformid = $form_id;
     }
   }
-  if(!empty($myformid)){
+  if (!empty($myformid)) {
   //defines a button in every nodeform calling it
-  if($form_id == $myformid){
+  if ($form_id == $myformid) {
     $form['node2node_button'] = array(
       '#weight' => '0',
       '#type' => 'button',
@@ -83,7 +84,7 @@ function node2node_form_alter(&$form, $form_state, $form_id){
       '#access' => user_access('use node2node-button'),
       //create button with an aha-callback on the event-listener
       '#ahah' => array(
-        'path' => $base_url . 'node2node/add',  
+        'path' => $base_url . 'node2node/add',
         'progress' => array(
           'type' => 'throbber'
         ),
@@ -100,6 +101,7 @@ function node2node_form_alter(&$form, $form_state, $form_id){
 function node2node_form_alter(&$form, $form_state, $form_id){
   drupal_set_message('Die Form-ID ist ' . $form_id);
 }*/
+
 
 /**
  * @todo: build a url containing mycontent-view
