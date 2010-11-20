@@ -53,8 +53,8 @@ function node2node_menu() {
  */
 
 function node2node_show() {
-  module_invoke(views);
-  $output = views_embed_view('node2nodeFilter_mycontent');
+  $output = theme('node2node_output');
+  $output = views_embed_view('node2nodeFilter_mycontent','default');
   return $output;
 }
 /**node2node_admin_settings
@@ -121,7 +121,12 @@ function node2node_views_api() {
  * Implementation of hook_theme()
  */
 function node2node_theme() {
-
+  return array(
+    'node2node_output' => array(
+        'arguments' => array('node2node' => NULL),
+        'template' => 'node2node-output',
+    )
+  );
 }
 /**
  * @todo: build a url containing mycontent-view
