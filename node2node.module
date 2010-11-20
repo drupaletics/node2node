@@ -11,6 +11,13 @@
  */
 
 /**
+ * Implementation of hook_perm()
+ */
+
+function node2node_perm(){
+  return array('use node2node-button');
+}
+/**
  * Implementation of hook_menu()
  *
  * ##form-args:
@@ -29,9 +36,26 @@ function node2node_menu() {
       'file' => 'node2node.admin.inc',
       'type' => 'MENU_NORMAL_ITEM'
   );
+  $items['node2node/add'] = array(
+    'title' => t('Add a node'),
+      'page callback' => 'node2node_show',
+      'type' => 'MENU_CALLBACK',
+      'access callback' => 'user_access', 
+      'access arguments' => array('use node2node-button')
+  );
   return $items;
 }
 
+/**
+ * node2node_js
+ * helper for js-callback in node2node_menu
+ */
+
+function node2node_show(){
+  module_invoke(views);
+  $output = views_embed_view('node2nodeFilter_mycontent');
+  return drupal_json($output);
+}
 /**node2node_admin_settings
  * implementation of hook_nodeapi()
  */
@@ -53,18 +77,19 @@ function node2node_form_alter(&$form, $form_state, $form_id){
     $form['node2node_button'] = array(
       '#weight' => '0',
       '#type' => 'button',
-      '#button_type' => 'submit',
+      '#button_type' => 'button',
       '#title' => t('Insert your nodelinks to body'),
       '#value' => t('node2node-Link'),
       //create button with an aha-callback on the event-listener
       '#ahah' => array(
-        'path' => '',  //TODO: implement hook_menu to build a url for aha-path
+        'path' => $base_url . 'node2node/add',  
         'progress' => array(
           'type' => 'throbber'
         ),
         'wrapper' => 'node2node-selection',
         'method' => 'replace',
       ),
+
     );
     }
   }
@@ -78,6 +103,5 @@ function node2node_form_alter(&$form, $form_state, $form_id){
 /**
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
- * @todo: FIX : node2node-button doesent apear on all node-add-forms
  * @todo: FIX : error-messages when insering new terms to blogcategory
  */
