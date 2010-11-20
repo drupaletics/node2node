@@ -88,7 +88,7 @@ function node2node_form_alter(&$form, $form_state, $form_id) {
       '#access' => user_access('use node2node-button'),
       //create button with an aha-callback on the event-listener
       '#ahah' => array(
-      'path' => 'node2node/add/',
+      'path' => 'node2node/add/js',
         'progress' => array(
           'type' => 'throbber'
         ),
