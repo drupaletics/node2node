@@ -1,5 +1,6 @@
 name = node2node
 description = node2node
 dependencies[] = views
+dependencies[] = jquery_ui
 package = drupaletics_devteam_releases
 core = 6.x
