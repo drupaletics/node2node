@@ -141,7 +141,6 @@ function node2node_theme(){
  * Build theme-functions
  */
 function theme_node2node($button){
-  theme('node2node_javascript');
   $output .= drupal_render($button);
   return $output;
 }
@@ -149,7 +148,14 @@ function theme_node2node_javascript(){
   drupal_add_js(drupal_get_path('module', 'node2node') . '/ui/node2node.js');
 }
 
-
+/**
+ * Processing variables for themable output
+ */
+function theme_preprocess_node2node_link(&$variables){
+  $variables['node2node'] = array();
+  $variables['node2node']['href'] = base_path() . '/node2node_add/js';
+  $variables['node2node']['title'] = 'node2node-Link';
+}
 /**
  * @todo: build a url containing mycontent-view
  * @todo: define an ajax-ready-listener to handle the html, got from the AHAH-Event_Listener
