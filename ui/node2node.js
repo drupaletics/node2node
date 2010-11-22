@@ -7,41 +7,37 @@ if (Drupal.jsEnabled){
 
     //configuration-attributes
     this.config = new Array();
-    this.config['url'] = url;
-    this.config['responded_obj'] = callback;
 
     //data-attribute
     this.db = new String();
 
     //call-method
     this.call = function(){
-      $.get(this.config['url'], function(data){
-        this.db = data;
-      });//$.get
+      $.get(url, function(data){
+        var output = $(data).find('div.view-content');
+        $(callback).html(output)
+      });//$.get     
     }//this.call
 
-    //jsonparse-method
-    this.output = function(){
-      var html = '<div class="gotAjax">';
-      html += this.db;
-      html += '</div>';
-      return html;
-    }
   }
+  
 
-  var n2nForm = 'form#node-form';
-  var n2nLink = 'form#node-form .node2node-link a';
-  var n2nAdress = $(n2nLink).attr('href');
-  var n2nRequest = new dropAjaxObj(n2nAdress);
+
+  
   
   $(document).ready(function() {
-    $(n2nLink).click(function(event){
+  
+  var n2nForm = $('form#node-form');
+  var n2nContainer = 'form#node-form #node2nodeResponse';
+  var n2nLink = $('form#node-form .node2node-link a');
+  var n2nAdress = n2nLink.attr('href');
+  var n2nRequest = new dropAjaxObj(n2nAdress,n2nContainer);
+
+
+    n2nForm.append('<div id="node2nodeResponse"></div>');
+    n2nLink.click(function(event){
       event.preventDefault();
       n2nRequest.call();
-      return false;
-    });
-    $(n2nForm).ajaxComplete(function(e, xhr, settings){
-      $(this).append(n2nRequest.output());
       return false;
     });
   });
