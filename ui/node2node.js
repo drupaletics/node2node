@@ -22,14 +22,9 @@ if (Drupal.jsEnabled){
 
     //jsonparse-method
     this.output = function(){
-      var max = this.db.length;
-      var html = '<div class="gotJson"><ul class="jsonList">';
-      for(i=0; i <= max; i++){
-        html += '<li class="jsonElement">';
-        html += this.db[i];
-        html += '</li>';
-      }
-      html += '</ul></div>';
+      var html = '<div class="gotAjax">';
+      html += this.db;
+      html += '</div>';
       return html;
     }
   }
@@ -46,7 +41,7 @@ if (Drupal.jsEnabled){
       return false;
     });
     $(n2nForm).ajaxComplete(function(e, xhr, settings){
-      $(this).append(n2nRequest.jsonParse());
+      $(this).append(n2nRequest.output());
       return false;
     });
   });
