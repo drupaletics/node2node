@@ -55,7 +55,7 @@ function node2node_menu() {
 
 function node2node_show() {
   $output = views_embed_view('node2nodeFilter_mycontent','default');
-  return drupal_json($output);
+  return $output;
 }
 /**node2node_admin_settings
  * Implementation of hook_nodeapi().
