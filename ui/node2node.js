@@ -3,7 +3,7 @@ if (Drupal.jsEnabled){
    * Definieren eines objektes, welches den event-handler bindet, und daten vom server anfordert,
    * entgegennimmt und parst.
    */
-  function dropJsonObj(url,callback) {
+  function dropAjaxObj(url,callback) {
 
     //configuration-attributes
     this.config = new Array();
@@ -11,17 +11,17 @@ if (Drupal.jsEnabled){
     this.config['responded_obj'] = callback;
 
     //data-attribute
-    this.db = new Array();
+    this.db = new String();
 
     //call-method
     this.call = function(){
-      $.getJSON(this.config['url'], function(json){
-        
-      });//getJSON
+      $.get(this.config['url'], function(data){
+        this.db = data;
+      });//$.get
     }//this.call
 
     //jsonparse-method
-    this.jsonParse = function(){
+    this.output = function(){
       var max = this.db.length;
       var html = '<div class="gotJson"><ul class="jsonList">';
       for(i=0; i <= max; i++){
@@ -37,7 +37,7 @@ if (Drupal.jsEnabled){
   var n2nForm = 'form#node-form';
   var n2nLink = 'form#node-form .node2node-link a';
   var n2nAdress = $(n2nLink).attr('href');
-  var n2nRequest = new dropJsonObj(n2nAdress);
+  var n2nRequest = new dropAjaxObj(n2nAdress);
   
   $(document).ready(function() {
     $(n2nLink).click(function(event){
@@ -51,3 +51,8 @@ if (Drupal.jsEnabled){
     });
   });
 }
+
+/**
+ * @todo: define .call()-method for dropJsonObj
+ * @todo: implementation of jquery.ui.dialog
+ */
