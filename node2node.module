@@ -139,6 +139,7 @@ function theme_node2node($button){
 function theme_node2node_javascript(){
   jquery_ui_add(array('ui.draggable','ui.droppable','ui.dialog','ui.resizable'));
   drupal_add_js(drupal_get_path('module', 'node2node') . '/ui/node2node.js');
+  drupal_add_css(drupal_get_path('module', 'node2node') . '/ui/node2node.css');
 }
 
 /**
