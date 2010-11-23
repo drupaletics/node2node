@@ -1,0 +1,24 @@
+/* 
+    Document   : node2node.css
+    Created on : 23.11.2010, 03:36:10
+    Author     : Siegfried Dünkel <chaosprinz76@googlemail.com>
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.ui-dialog-container {
+    background-color: #fff;
+}
+.ui-resizable-handle {
+  border-width: 5px !important;
+  -moz-border-radius: 180em;
+}
+#node2nodeResponse {
+  padding: 1.5em;
+}
+
