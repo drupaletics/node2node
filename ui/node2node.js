@@ -67,7 +67,7 @@ if (Drupal.jsEnabled){
 }
 
 Drupal.behaviors.n2nDialogClick = function(){
-  $('#node2nodeResponse .field-content a').click(function(event){
+  $('#node2nodeResponse a').click(function(event){
     event.preventDefault();
     n2nLinkHtml = '&lt;a href="';
     n2nLinkHtml += $(this).attr('href');
