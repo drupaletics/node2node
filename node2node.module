@@ -54,7 +54,7 @@ function node2node_menu() {
  */
 
 function node2node_show() {
-  $output = views_embed_view('node2nodeFilter_mycontent','default');
+  $output = views_embed_view('node2node','default');
   return $output;
 }
 /**node2node_admin_settings
