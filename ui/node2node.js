@@ -26,20 +26,46 @@ if (Drupal.jsEnabled){
   
   
   $(document).ready(function() {
-  
-  var n2nForm = $('form#node-form');
-  var n2nContainer = 'form#node-form #node2nodeResponse';
-  var n2nLink = $('form#node-form .node2node-link a');
-  var n2nAdress = n2nLink.attr('href');
-  var n2nRequest = new dropAjaxObj(n2nAdress,n2nContainer);
 
+    /**
+    *Predefine some jquery-objects to get natural feeling when going to run the code
+    */
+
+    var n2nForm = $('form#node-form');
+    var n2nContainer = '#node2nodeResponse';
+    var n2nLink = $('form#node-form .node2node-link a');
+    var n2nAdress = n2nLink.attr('href');
+
+    /**
+     *Declare an object, which can handle ajax-calls
+     */
+    var n2nRequest = new dropAjaxObj(n2nAdress,n2nContainer);
+
+    /**
+     *##runcode
+     *First append a new div and build a jquery-object from it
+     */
 
     n2nForm.append('<div id="node2nodeResponse"></div>');
+    var n2nDialog = $('#node2nodeResponse');
+    //run it as a closed dialog-box
+    n2nDialog.dialog({autoOpen: false});
+
+    /**
+     *##eventhandler
+     *declare eventlisteners for click and ajax-complete
+     */
+
+    //ajax call on click-event
     n2nLink.click(function(event){
       event.preventDefault();
       n2nRequest.call();
+      n2nDialog.dialog('open');
       return false;
     });
+
+    //Open the dialo-box on ajax-complete
+   
   });
 }
 
