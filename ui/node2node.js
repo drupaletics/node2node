@@ -78,6 +78,5 @@ Drupal.behaviors.n2nDialogClick = function(){
   });
 }
 /**
- * @todo: define .call()-method for dropJsonObj
- * @todo: implementation of jquery.ui.dialog
+ * @todo: fix the properties of dialogbox
  */
