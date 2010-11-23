@@ -15,15 +15,12 @@ if (Drupal.jsEnabled){
     this.call = function(){
       $.get(url, function(data){
         var output = $(data).find('div.view-content');
-        $(callback).html(output)
+        $(callback).html(output);
+        Drupal.attachBehaviors()
       });//$.get     
     }//this.call
 
   }
-  
-
-
-  
   
   $(document).ready(function() {
 
@@ -53,7 +50,7 @@ if (Drupal.jsEnabled){
 
     /**
      *##eventhandler
-     *declare eventlisteners for click and ajax-complete
+     *declare eventlisteners for different click-events
      */
 
     //ajax call on click-event
@@ -64,11 +61,17 @@ if (Drupal.jsEnabled){
       return false;
     });
 
-    //Open the dialo-box on ajax-complete
-   
+    
+ 
   });
 }
 
+Drupal.behaviors.n2nDialogClick = function(){
+  $('#node2nodeResponse .field-content a').click(function(event){
+    event.preventDefault();
+    $('#edit-body').append('moin');
+  });
+}
 /**
  * @todo: define .call()-method for dropJsonObj
  * @todo: implementation of jquery.ui.dialog
