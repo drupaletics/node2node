@@ -69,7 +69,12 @@ if (Drupal.jsEnabled){
 Drupal.behaviors.n2nDialogClick = function(){
   $('#node2nodeResponse .field-content a').click(function(event){
     event.preventDefault();
-    $('#edit-body').append('moin');
+    n2nLinkHtml = '&lt;a href="';
+    n2nLinkHtml += $(this).attr('href');
+    n2nLinkHtml += '"&gt;';
+    n2nLinkHtml += $(this).text();
+    n2nLinkHtml += '&lt;/a&gt;';
+    $('#edit-body').append(n2nLinkHtml);
   });
 }
 /**
