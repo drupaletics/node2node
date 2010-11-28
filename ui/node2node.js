@@ -71,7 +71,9 @@ Drupal.behaviors.n2nDialogClick = function(){
     event.preventDefault();
     n2nLinkHtml = '&lt;a href="';
     n2nLinkHtml += $(this).attr('href');
-    n2nLinkHtml += '"&gt;';
+    n2nLinkHtml += '" title="';
+    n2nlinkHtml += $(this).attr('title');
+    n2nlinkHtml += '"&gt;';
     n2nLinkHtml += $(this).text();
     n2nLinkHtml += '&lt;/a&gt;';
     $('#edit-body').append(n2nLinkHtml);
