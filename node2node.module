@@ -97,8 +97,8 @@ function node2node_form_alter(&$form, $form_state, $form_id) {
 function node2node_views_api() {
   return array(
     'api' => 2,
-    //'path' => drupal_get_path('module', 'node2node'),
-    'path' => drupal_get_path('module', 'node2node') . '/includes',
+    'path' => drupal_get_path('module', 'node2node'),
+    //'path' => drupal_get_path('module', 'node2node') . '/includes',
   );
 }
 
