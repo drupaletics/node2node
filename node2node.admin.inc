@@ -15,6 +15,14 @@ function node2node_admin_settings() {
   //Call a array, containing the nodetypes with internal names as #key and
   //userfriendly names for the value
   $options = node_get_types('names');
+  dsm($options);
+  function make_array($options){
+  foreach ($options as $key => $value) {
+      $option[][$value] = $value;
+  }
+  return $option;
+  }
+  dsm($option);
   //Defines the admin-form
   $form['node2node_nodetypes'] = array(
       '#type' => 'checkboxes',
@@ -24,6 +32,9 @@ function node2node_admin_settings() {
       '#description' => t('The node2node-Button will available on all form of nodetypes you choose here.'),
   );
   if (module_exists('views')) {
+      foreach ($form['node2node_nodetypes']['#options'] as $value) {
+
+      }
         $views = array('--' => '--');
         $all_views = views_get_all_views();
         foreach ($all_views as $view) {
@@ -68,5 +79,6 @@ function node2node_admin_settings() {
           );
         }
       }
+      dsm($form);
   return system_settings_form($form);
 }
