@@ -67,7 +67,7 @@ if (Drupal.jsEnabled){
 }
 
 Drupal.behaviors.n2nDialogClick = function(){
-  $('#node2nodeResponse a').each(function(){
+  $('#node2nodeResponse a:not(a[href *= "order"])').each(function(){
     $(this).wrap('<div class="n2nResponseLinkWrapper" />').click(function(event){
     event.preventDefault();
     var n2nLinkHtml = $(this).parent().html();
