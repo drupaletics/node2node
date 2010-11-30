@@ -1,4 +1,5 @@
 <?php
+
 // $Id$
 /**
  * @file
@@ -12,10 +13,10 @@
  * @see system_stettings_form()
  */
 function node2node_admin_settings() {
+
   //Call a array, containing the nodetypes with internal names as #key and
   //userfriendly names for the value
   $options = node_get_types('names');
-
   //Defines the admin-form
   $form['node2node_nodetypes'] = array(
       '#type' => 'checkboxes',
