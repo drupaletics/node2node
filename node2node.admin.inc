@@ -32,7 +32,7 @@ function node2node_admin_settings() {
     }
     foreach($options as $option){
         $form[$option]['nodetype_select'] = array(
-            '#title' => t('Choose the view for nodetype ').$option,
+            '#title' => t('Settings for nodetype ').$option,
             '#type' => 'fieldset',
             '#collapsible' => TRUE,
             '#collapsed' => TRUE,
