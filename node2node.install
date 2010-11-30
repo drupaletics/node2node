@@ -10,7 +10,9 @@
  */
 function node2node_install() {
   variable_set('node2node_nodetypes', array('story' => '0'));
+
 }
+
 /**
  * Implementation of hook_uninstall().
  */
