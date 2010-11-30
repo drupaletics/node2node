@@ -67,16 +67,15 @@ if (Drupal.jsEnabled){
 }
 
 Drupal.behaviors.n2nDialogClick = function(){
-  $('#node2nodeResponse a').click(function(event){
+  $('#node2nodeResponse a').each(function(){
+    $(this).wrap('<div class="n2nResponseLinkWrapper" />').click(function(event){
     event.preventDefault();
-    n2nLinkHtml = '&lt;a href="';
-    n2nLinkHtml += $(this).attr('href');
-    n2nLinkHtml += '" title="';
-    n2nlinkHtml += $(this).attr('title');
-    n2nlinkHtml += '"&gt;';
-    n2nLinkHtml += $(this).text();
-    n2nLinkHtml += '&lt;/a&gt;';
-    $('#edit-body').append(n2nLinkHtml);
+    var n2nLinkHtml = $(this).parent().html();
+    var n2nBodyText = $('#edit-body').val();
+    n2nBodyText += n2nLinkHtml;
+    $('#edit-body').text(n2nBodyText);
+    return null;
+  });
   });
 }
 /**
