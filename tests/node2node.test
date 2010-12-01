@@ -33,6 +33,9 @@ class Node2nodeTestCase extends DrupalCase {
   /*
    *test if node2node-link gets builded
    */
+  public function testNode2NodeLink() {
+      
+  }
 }
 
 ?>
