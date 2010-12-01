@@ -1,1 +1,26 @@
-node2nodeFilter will bring posibility to link your nodes in a other nodes body-form.
+When you have to write a blog-entry, a documentation-page or
+any other kind of content you may need to link other content
+on the site.
+To do so, we open a new browser-tab with our site, where we
+search the content, we want to link. Then copy the url we
+get, go back to our node-edit-form, create the html for a
+link and paste the url to the href-attribute.
+I think, this cant be the way. So i created this module.
+
+After installing it, you have new admin-settings on this
+page: /admin/settings/node2node
+Here you choose which nodetype should integrate the
+feature.
+
+When you create a new node from one the types you choosed
+here, you will find a link called: node2node-link. When
+you click it, a dialogbox opens up which shows a view.
+When you click a link in this view, the page wont be
+called, but its html-code will be pasted to the bodytext
+of your node.
+
+This module is maintained by the drupaletics-dev-team,
+and developed by chaosprinz.
+Its under the gnu-license. Look under licence.txt for
+license-details please.
+
