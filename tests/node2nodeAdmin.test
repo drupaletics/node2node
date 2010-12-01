@@ -1,0 +1,27 @@
+<?php
+/* 
+ * Drupaletics-devteam
+ * Siggi Dünel <chaosprinz76@googlemail.com>
+
+ */
+
+/**
+ * Unittest of admin-page of node2node-Module
+ *
+ * @author siggi
+ * @abstract
+ */
+class node2nodeAdminTest extends DrupalTestCase {
+  /**
+   * get_info() has to be implemented!
+   */
+
+  function get_info(){
+      return array(
+        'name' => t('Page node2node settings'),
+        'desc' => t('Call the page, verify its submission'),
+        'group' => 'Drupaletics_dev-Team Tests',
+      );
+  }
+}
+?>
