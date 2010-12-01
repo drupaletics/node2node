@@ -150,6 +150,15 @@ function theme_preprocess_node2node_link(&$variables){
   $variables['node2node']['href'] = base_path() . '/node2node_add/js';
   $variables['node2node']['title'] = 'node2node-Link';
 }
+
+/**
+ * Implementation of hook_simpletest
+ */
+function node2node_simpletest(){
+    $dir = drupal_get_path('module', 'node2node') . '/tests';
+    $tests = file_scan_directory($dir, '\.test$');
+    return array_keys($tests);
+}
 /**
  * @todo: FIX : error-messages when insering new terms to blogcategory
  * @todo: FIX: preprocess and template-file seem not to run
