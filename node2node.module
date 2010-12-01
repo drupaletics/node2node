@@ -151,9 +151,6 @@ function theme_preprocess_node2node_link(&$variables){
   $variables['node2node']['title'] = 'node2node-Link';
 }
 
-/**
- * Implementation of hook_simpletest
- */
 function node2node_simpletest(){
     $dir = drupal_get_path('module', 'node2node') . '/tests';
     $tests = file_scan_directory($dir, '\.test$');

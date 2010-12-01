@@ -1,0 +1,38 @@
+<?php
+/* 
+ * Drupaletics-devteam
+ * Siggi Dünkel <chaosprinz76@googlemail.com>
+
+ */
+
+/**
+ * Unittest of admin-page of node2node-Module
+ *
+ * @author siggi
+ * 
+ */
+class Node2nodeTestCase extends DrupalCase {
+  protected $privileged_user;
+  /**
+   * getInfo() has to be implemented!
+   */
+    public static function getInfo() {
+      return array(
+        'name' => 'node2node',
+        'description' => 'Test for the node2node-Module. Its admin-settings,the creation of the node2node-Link.',
+        'group' => 'node2node',
+      );
+  }
+
+  /**
+   * test admin_settings
+   */
+  public function testNode2NodeSettings() {
+      
+  }
+  /*
+   *test if node2node-link gets builded
+   */
+}
+
+?>
