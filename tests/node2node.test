@@ -11,7 +11,7 @@
  * @author siggi
  * 
  */
-class Node2nodeTestCase extends DrupalCase {
+class Node2nodeTestCase extends DrupalTestCase {
   protected $privileged_user;
   /**
    * getInfo() has to be implemented!
